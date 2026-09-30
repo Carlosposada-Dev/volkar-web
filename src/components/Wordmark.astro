@@ -1,0 +1,33 @@
+---
+/**
+ * Wordmark A: condensada 900, inclinado 8°.
+ * Con `cae`, cada letra se anima cayendo (animación base 2). El nombre completo queda
+ * accesible por aria-label; las letras sueltas se ocultan al lector de pantalla.
+ */
+import { marca } from '../config/marca';
+
+interface Props {
+  etiqueta?: 'h1' | 'span' | 'p';
+  cae?: boolean;
+  class?: string;
+}
+
+const { etiqueta: Etiqueta = 'span', cae = false, class: clase = '' } = Astro.props;
+const letras = Array.from(marca.nombre);
+---
+
+{
+  cae ? (
+    <Etiqueta class:list={['wordmark cae', clase]} aria-label={marca.nombre}>
+      <span aria-hidden="true">
+        {letras.map((l, i) => (
+          <span class="letra" style={`--i:${i}`}>
+            {l}
+          </span>
+        ))}
+      </span>
+    </Etiqueta>
+  ) : (
+    <Etiqueta class:list={['wordmark', clase]}>{marca.nombre}</Etiqueta>
+  )
+}

@@ -1,0 +1,15 @@
+---
+/**
+ * Barra fija de WhatsApp en móvil (animación base 4). animaciones.ts la muestra cuando el hero
+ * sale de pantalla y la esconde cuando la sección de contacto ya está a la vista.
+ */
+import IconoWhatsApp from './IconoWhatsApp.astro';
+import { cierre, enlaceWhatsApp } from '../config/marca';
+---
+
+<div id="barra-wa" class="barra-wa fixed inset-x-0 bottom-0 z-20 lg:hidden p-3 bg-negro border-t-[3px] border-amarillo">
+  <a href={enlaceWhatsApp()} class="boton bg-amarillo text-negro text-[22px] min-h-14 w-full" rel="noopener">
+    <IconoWhatsApp tamano={24} />
+    {cierre.cta}
+  </a>
+</div>

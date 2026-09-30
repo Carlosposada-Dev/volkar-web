@@ -20,3 +20,6 @@ Thumbs.db
 # logs
 npm-debug.log*
 *.log
+
+# sesión local
+.claude/

@@ -1,0 +1,38 @@
+---
+import '@fontsource-variable/big-shoulders-display/wght';
+import '@fontsource-variable/archivo/wght';
+import '@fontsource-variable/jetbrains-mono/wght';
+import '../styles/global.css';
+import { marca } from '../config/marca';
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+}
+
+const { titulo = `${marca.nombre} · ${marca.lema}`, descripcion = marca.descripcion } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <meta name="theme-color" content="#F5C400" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Marca el documento como "con JS" antes de pintar: los estados iniciales de animación dependen de esto. -->
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body class="bg-amarillo text-negro font-texto antialiased">
+    <slot />
+    <script src="../scripts/animaciones.ts"></script>
+  </body>
+</html>

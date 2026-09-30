@@ -1,0 +1,313 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Tokens de la dirección A · Valla de vía (ver docs/diseno.md).
+   Fuente: design/canvas/A-movil.dc.html y A-escritorio.dc.html.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-amarillo: #f5c400;
+  --color-negro: #000000;
+  --color-blanco: #ffffff;
+  --color-tinta-suave: #333333; /* texto secundario sobre amarillo, 7.7:1 */
+  --color-gris-claro: #b3b3b3; /* texto secundario sobre negro, 10:1 */
+
+  --font-display: 'Big Shoulders Display Variable', Impact, sans-serif;
+  --font-texto: 'Archivo Variable', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', monospace;
+
+  /* Escala fluida: 390 px → 1440 px, valores tomados de los dos artboards. */
+  --text-h1: clamp(6.75rem, 3.04rem + 15.24vw, 16.75rem); /* 108 → 268 */
+  --text-lema: clamp(2.125rem, 1.71rem + 1.71vw, 3.25rem); /* 34 → 52 */
+  --text-h2: clamp(4rem, 2.7rem + 5.33vw, 7.5rem); /* 64 → 120 */
+  --text-h3: clamp(2rem, 1.72rem + 1.14vw, 2.75rem); /* 32 → 44 */
+  --text-cifra: clamp(9.375rem, 5.2rem + 17.14vw, 20.625rem); /* 150 → 330 */
+  --text-cifra-2: clamp(6rem, 3.59rem + 9.9vw, 12.5rem); /* 96 → 200 */
+  --text-municipio: clamp(3rem, 2.16rem + 3.43vw, 5.25rem); /* 48 → 84 */
+  --text-cierre: clamp(3.75rem, 2.54rem + 4.95vw, 7rem); /* 60 → 112 */
+  --text-cuerpo: clamp(1rem, 0.93rem + 0.29vw, 1.1875rem); /* 16 → 19 */
+  --text-cuerpo-2: clamp(0.9375rem, 0.87rem + 0.19vw, 1.0625rem); /* 15 → 17 */
+  --text-cta: clamp(1.75rem, 1.66rem + 0.38vw, 2rem); /* 28 → 32 */
+  --text-ligero: clamp(1.875rem, 1.64rem + 0.95vw, 2.5rem); /* 30 → 40 */
+
+  --spacing-gutter: clamp(1.25rem, 0.23rem + 4.19vw, 4rem); /* 20 → 64 */
+}
+
+@layer base {
+  html {
+    background: var(--color-amarillo);
+    color: var(--color-negro);
+    font-family: var(--font-texto);
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    margin: 0;
+    min-height: 100dvh;
+  }
+  :focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-negro);
+    color: var(--color-amarillo);
+  }
+}
+
+@layer components {
+  /* Tipografía de valla */
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: var(--text-h2);
+    line-height: 0.88;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .t-h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--text-h3);
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+  .t-mono {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  /* Wordmark inclinado 8° */
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    transform: skewX(-8deg);
+    transform-origin: left bottom;
+    display: inline-block;
+  }
+
+  /* Botón de valla */
+  .boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  .boton-cta {
+    font-size: var(--text-cta);
+    min-height: clamp(4rem, 3.81rem + 0.76vw, 4.5rem); /* 64 → 72 */
+    padding-inline: clamp(0.75rem, 0.29rem + 1.9vw, 2rem); /* 12 → 32 */
+    white-space: nowrap;
+  }
+
+  /* Franja diagonal de obra (dirección A). Corre con el scroll: ver animaciones más abajo. */
+  .franjas {
+    --paso: 14px;
+    height: 22px;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--color-negro) 0 var(--paso),
+      var(--color-amarillo) var(--paso) calc(var(--paso) * 2)
+    );
+    background-position-x: var(--corrida, 0px);
+  }
+  @media (width >= 64rem) {
+    .franjas {
+      --paso: 18px;
+      height: 28px;
+    }
+  }
+
+  /* Placeholder de foto/video real: nunca stock */
+  .placeholder-real {
+    border: 3px dashed var(--color-negro);
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    padding: 12px;
+  }
+  .placeholder-real > .etiqueta {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 12px;
+    background: var(--color-negro);
+    color: var(--color-amarillo);
+    padding: 4px 8px;
+  }
+
+  /* Ficha técnica y datos de contacto en monoespaciada */
+  .ficha {
+    font-family: var(--font-mono);
+    font-size: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  }
+  .ficha > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Movimiento. Una sola coreografía de entrada + los efectos elegidos.
+   Con prefers-reduced-motion: reduce no hay movimiento y se ve el estado final.
+   ------------------------------------------------------------------ */
+
+/* Entrada orquestada del hero (arranca cuando el wordmark ya asentó) */
+.rv {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: rv 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+.rv.d1 {
+  animation-delay: 0.85s;
+}
+.rv.d2 {
+  animation-delay: 0.97s;
+}
+.rv.d3 {
+  animation-delay: 1.09s;
+}
+.rv.d4 {
+  animation-delay: 1.23s;
+}
+@keyframes rv {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 2 · El wordmark se descarga: cada letra cae con peso y asienta con un rebote mínimo (~1 s en total). */
+.cae .letra {
+  display: inline-block;
+  animation: caer 0.55s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+  animation-delay: calc(0.08s * var(--i));
+}
+@keyframes caer {
+  0% {
+    transform: translateY(-1.15em);
+    opacity: 0;
+  }
+  55% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  72% {
+    transform: translateY(-0.06em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* 3 · Números que cuentan como báscula: cada dígito es una tira que rueda hasta su objetivo. */
+.odometro {
+  display: inline-flex;
+  align-items: baseline;
+}
+.odo-digito {
+  display: inline-block;
+  height: 1em;
+  line-height: 1;
+  overflow: hidden;
+  vertical-align: baseline;
+}
+.odo-tira {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(calc(var(--objetivo) * -1em));
+}
+.odo-tira > span {
+  display: block;
+  height: 1em;
+  line-height: 1;
+  text-align: center;
+}
+html.js .odo-tira {
+  transform: translateY(0);
+  transition: transform 1.6s cubic-bezier(0.16, 0.9, 0.2, 1);
+  transition-delay: calc(0.12s * var(--i));
+}
+html.js .odo-tira.rodando {
+  transform: translateY(calc(var(--objetivo) * -1em));
+}
+
+/* 4 · Barra de WhatsApp fija en móvil: aparece cuando el hero sale de pantalla, un solo pulso al entrar. */
+.barra-wa {
+  transform: translateY(105%);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.barra-wa.visible {
+  transform: translateY(0);
+}
+.barra-wa.pulso {
+  animation: pulso 0.6s 0.35s 1 ease-out;
+}
+@keyframes pulso {
+  0% {
+    box-shadow: 0 0 0 0 rgb(245 196 0 / 0.9);
+  }
+  100% {
+    box-shadow: 0 0 0 18px rgb(245 196 0 / 0);
+  }
+}
+
+/* A · Las franjas diagonales corren con el scroll, como la franja lateral de un camión al pasar.
+   Con soporte de scroll-driven animations lo hace el CSS; si no, animaciones.ts fija --corrida. */
+@supports (animation-timeline: view()) {
+  html.js .franjas {
+    animation: correr linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+@keyframes correr {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rv {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .cae .letra {
+    animation: none;
+  }
+  .odo-tira,
+  html.js .odo-tira {
+    transition: none;
+    transform: translateY(calc(var(--objetivo) * -1em));
+  }
+  .barra-wa {
+    transition: none;
+  }
+  .barra-wa.pulso {
+    animation: none;
+  }
+  html.js .franjas {
+    animation: none;
+    background-position-x: 0;
+  }
+}

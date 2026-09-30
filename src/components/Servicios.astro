@@ -1,0 +1,35 @@
+---
+import { servicios } from '../config/marca';
+---
+
+<section
+  id="servicios"
+  class="bg-negro text-blanco px-gutter py-10 lg:pt-16 lg:pb-14 lg:grid lg:grid-cols-[440px_minmax(0,1fr)] lg:gap-12"
+>
+  <h2 class="t-h2 text-amarillo m-0 mb-2 lg:mb-0">Qué hacemos</h2>
+
+  <div class="flex flex-col border-t-2 border-amarillo">
+    {
+      servicios.map((s, i) => (
+        <div
+          class:list={[
+            'py-[22px] lg:py-[26px] flex flex-col gap-1.5 lg:grid lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-8',
+            i < servicios.length - 1 && 'border-b-2 border-amarillo',
+          ]}
+        >
+          <h3 class="t-h3 m-0">{s.titulo}</h3>
+          <div class="flex flex-col gap-2.5 lg:gap-3.5">
+            <p class="m-0 text-cuerpo-2 leading-[1.45] lg:leading-[1.5] text-gris-claro max-w-[34ch] lg:max-w-[48ch]">{s.texto}</p>
+            {'modalidades' in s && (
+              <ul class="m-0 p-0 list-none flex flex-wrap gap-2 lg:gap-2.5">
+                {s.modalidades.map((m) => (
+                  <li class="t-mono text-[13px] lg:text-[14px] border-2 border-amarillo text-amarillo px-2.5 py-1.5 lg:px-3.5 lg:py-2">{m}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

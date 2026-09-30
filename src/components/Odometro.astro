@@ -1,0 +1,34 @@
+---
+/**
+ * Número que cuenta como báscula (animación base 3). Cada dígito es una tira 0–9–0–9 que
+ * rueda hasta su objetivo cuando entra en pantalla (animaciones.ts añade `.rodando`).
+ * Sin JS o con reduced-motion, el CSS muestra el número final directo.
+ * Si el dato no está confirmado, va entre corchetes, como todo dato pendiente.
+ */
+interface Props {
+  valor: number;
+  confirmado: boolean;
+  class?: string;
+}
+
+const { valor, confirmado, class: clase = '' } = Astro.props;
+const digitos = String(valor).split('');
+const tira = [...Array(10).keys(), ...Array(10).keys()]; // 0–9 dos veces: una vuelta completa + objetivo
+const visible = confirmado ? String(valor) : `[${valor}]`;
+---
+
+<span class:list={['odometro', clase]} role="img" aria-label={visible}>
+  {!confirmado && <span aria-hidden="true">[</span>}
+  {
+    digitos.map((d, i) => (
+      <span class="odo-digito" aria-hidden="true">
+        <span class="odo-tira" style={`--objetivo:${10 + Number(d)};--i:${i}`}>
+          {tira.map((n) => (
+            <span>{n}</span>
+          ))}
+        </span>
+      </span>
+    ))
+  }
+  {!confirmado && <span aria-hidden="true">]</span>}
+</span>

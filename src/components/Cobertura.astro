@@ -1,0 +1,41 @@
+---
+/**
+ * Dónde: lista escalonada de municipios. En la segunda vuelta la reemplaza el mapa de Urabá
+ * dibujado con el scroll (animación 5, pendiente).
+ */
+import { cobertura } from '../config/marca';
+const anchos = ['100%', '90%', '80%', '70%', '60%'];
+const anchosLg = ['100%', '88%', '76%', '64%', '52%'];
+---
+
+<section
+  id="cobertura"
+  class="bg-negro text-amarillo px-gutter py-10 lg:pt-16 lg:pb-14 flex flex-col gap-1.5 lg:grid lg:grid-cols-[420px_minmax(0,1fr)] lg:gap-12 lg:items-start"
+>
+  <div class="flex flex-col gap-2.5 lg:gap-4">
+    <h2 class="t-h2 m-0">Dónde</h2>
+    <p class="m-0 mb-3.5 lg:mb-0 text-cuerpo-2 leading-[1.45] lg:leading-[1.5] text-gris-claro max-w-[34ch] lg:max-w-[36ch]">
+      {cobertura.texto}
+    </p>
+    <p class="hidden lg:block m-0 mt-2 font-display font-light text-ligero leading-none text-blanco uppercase max-w-[14ch]">
+      {cobertura.cierre}
+    </p>
+  </div>
+
+  <ul class="m-0 p-0 list-none flex flex-col items-end font-display font-extrabold text-municipio leading-none lg:leading-[0.95] uppercase">
+    {
+      cobertura.municipios.map((m, i) => (
+        <li
+          class="py-1.5 lg:py-2 border-b-2 border-amarillo text-right w-(--w) lg:w-(--w-lg)"
+          style={`--w:${anchos[i]};--w-lg:${anchosLg[i]}`}
+        >
+          {m}
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="lg:hidden m-0 mt-4 font-display font-light text-ligero leading-none text-blanco uppercase">
+    {cobertura.cierre}
+  </p>
+</section>

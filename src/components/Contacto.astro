@@ -1,0 +1,41 @@
+---
+import Wordmark from './Wordmark.astro';
+import IconoWhatsApp from './IconoWhatsApp.astro';
+import { marca, contacto, cierre, enlaceWhatsApp } from '../config/marca';
+---
+
+<section id="contacto" class="bg-negro text-blanco px-gutter pt-10 pb-7 lg:pt-16 lg:pb-8 flex flex-col gap-[18px] lg:gap-8">
+  <div class="flex flex-col gap-[18px] lg:grid lg:grid-cols-[minmax(0,1fr)_520px] lg:gap-16 lg:items-end">
+    <div class="flex flex-col gap-[18px]">
+      <h2 class="t-h2 text-cierre leading-none text-amarillo m-0 lg:max-w-[10ch]">{cierre.titulo}</h2>
+      <p class="m-0 text-cuerpo-2 leading-[1.45] lg:leading-[1.5] text-gris-claro max-w-[34ch] lg:max-w-[44ch]">{cierre.texto}</p>
+    </div>
+
+    <div class="flex flex-col gap-[18px] lg:gap-5">
+      <a href={enlaceWhatsApp()} class="boton boton-cta bg-amarillo text-negro" rel="noopener">
+        <IconoWhatsApp tamano={28} />
+        {cierre.cta}
+      </a>
+
+      <dl class="ficha m-0 border-t border-gris-claro pt-4 text-[15px] lg:text-[16px] [&>div]:border-b-0 [&>div]:py-0 flex flex-col gap-2.5">
+        <div>
+          <dt class="text-gris-claro">LLAMAR</dt>
+          <dd class="m-0"><a href={`tel:${contacto.telefono}`} class="text-amarillo font-bold no-underline">{contacto.telefonoVisible}</a></dd>
+        </div>
+        <div>
+          <dt class="text-gris-claro">HORARIO</dt>
+          <dd class="m-0 font-bold">{contacto.horario}</dd>
+        </div>
+        <div>
+          <dt class="text-gris-claro">BASE</dt>
+          <dd class="m-0 font-bold uppercase">{contacto.base}, Urabá</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <footer class="mt-3 lg:mt-8 flex justify-between items-end gap-4 text-[12px] lg:text-[13px] text-gris-claro">
+    <Wordmark class="text-[28px] lg:text-[36px] text-amarillo" />
+    <span class="text-right">{marca.region} · {contacto.razonSocial} · NIT {contacto.nit}</span>
+  </footer>
+</section>

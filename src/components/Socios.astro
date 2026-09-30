@@ -1,0 +1,40 @@
+---
+/** Somos dos: mismo peso visual para los dos socios. Sin testimonios ni clientes. */
+import { socios } from '../config/marca';
+---
+
+<section
+  id="socios"
+  class="px-gutter py-10 lg:pt-16 lg:pb-14 flex flex-col gap-[18px] lg:grid lg:grid-cols-[420px_minmax(0,1fr)] lg:gap-12 lg:items-start"
+>
+  <div class="flex flex-col gap-[18px] lg:gap-4">
+    <h2 class="t-h2 m-0">Somos dos</h2>
+    <p class="m-0 text-cuerpo leading-[1.45] lg:leading-[1.5] text-tinta-suave max-w-[32ch] lg:max-w-[34ch]">{socios.intro}</p>
+  </div>
+
+  <ul class="m-0 p-0 list-none flex flex-col gap-[18px] lg:flex-row lg:gap-10 lg:items-end">
+    {
+      socios.personas.map((p, i) => (
+        <li
+          class:list={[
+            'flex gap-3.5 items-stretch lg:flex-col lg:gap-3.5 lg:grow lg:basis-0',
+            i % 2 === 1 && 'flex-row-reverse text-right lg:text-left lg:pt-20',
+          ]}
+        >
+          {p.foto ? (
+            <img src={p.foto} alt={p.nombre} class="w-[120px] h-[140px] lg:w-full lg:h-[300px] object-cover shrink-0" loading="lazy" />
+          ) : (
+            <div class="placeholder-real w-[120px] h-[140px] lg:w-full lg:h-[300px] shrink-0 p-1.5 lg:p-2.5" role="img" aria-label={`Espacio para la foto real de ${p.nombre}`}>
+              <span class="etiqueta text-[10px] lg:text-[12px] px-[5px] py-[3px] lg:px-2 lg:py-1">FOTO REAL</span>
+            </div>
+          )}
+          <div class="flex flex-col justify-end gap-1 lg:gap-3.5">
+            <h3 class="t-h3 m-0 text-[30px] lg:text-[40px] leading-none">{p.nombre}</h3>
+            <span class="t-mono text-[13px] lg:text-[14px]">{p.rol}</span>
+            <p class="m-0 text-[14px] lg:text-[16px] leading-[1.4] lg:leading-[1.45] text-tinta-suave">{p.texto}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

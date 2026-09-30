@@ -1,0 +1,51 @@
+---
+/**
+ * Hero: wordmark que cae (2), frase que aparece cuando asienta, CTA y sitio para el
+ * video real de la tolva descargando (1). Sin clip todavía: placeholder marcado.
+ */
+import Wordmark from './Wordmark.astro';
+import IconoWhatsApp from './IconoWhatsApp.astro';
+import { marca, hero } from '../config/marca';
+---
+
+<section
+  id="inicio"
+  class="px-gutter pt-7 pb-6 lg:pt-14 lg:pb-0 grid gap-[18px] lg:grid-cols-[minmax(0,760px)_minmax(0,1fr)] lg:gap-12 lg:items-end"
+>
+  <div class="flex flex-col gap-[18px] lg:gap-[22px] lg:pb-12">
+    <Wordmark etiqueta="h1" cae class="text-h1 leading-[0.82] lg:leading-[0.8] lg:tracking-[-0.03em] lg:ml-4 m-0" />
+
+    <p class="rv d1 m-0 font-display font-bold text-lema leading-[0.95] uppercase lg:max-w-[14ch]">{marca.lema}</p>
+
+    <p class="rv d2 m-0 text-cuerpo leading-[1.45] lg:leading-[1.5] text-tinta-suave max-w-[32ch] lg:max-w-[44ch]">
+      {marca.descripcion}
+    </p>
+
+    <a href="#contacto" class="rv d3 boton boton-cta bg-negro text-amarillo lg:self-start">
+      <IconoWhatsApp tamano={28} />
+      Cotizar por WhatsApp
+    </a>
+  </div>
+
+  <div class="rv d4 relative z-10 lg:mb-[-28px]">
+    {
+      hero.video ? (
+        <video
+          class="block w-full h-[250px] lg:h-[560px] object-cover bg-negro"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster={hero.video.poster}
+          aria-label="La tolva de la volqueta descargando material en obra"
+        >
+          <source src={hero.video.src} type="video/mp4" />
+        </video>
+      ) : (
+        <div class="placeholder-real h-[250px] lg:h-[560px] lg:border-4 lg:p-4" role="img" aria-label="Espacio para el video real de la volqueta">
+          <span class="etiqueta lg:text-[14px]">{hero.placeholder}</span>
+        </div>
+      )
+    }
+  </div>
+</section>

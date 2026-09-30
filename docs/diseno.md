@@ -6,7 +6,13 @@ de `<helmet><style>` y el copy está literal en el HTML).
 
 ## Dirección elegida
 
-**[PENDIENTE — el fundador elige A, B o C]**
+**A · Valla de vía.** Decidida por el fundador el 2026-09-30. Manda el contratista que llama desde la
+obra: la página se lee desde lejos, en amarillo alta visibilidad y negro, con condensada gigante en
+mayúsculas. Las direcciones B y C quedan documentadas abajo como referencia; no se implementan.
+
+Implementación: `src/` (Astro 5 + Tailwind 4). Tokens en `src/styles/global.css` (`@theme`), copy y datos
+pendientes en `src/config/marca.ts`. Animaciones implementadas: base 1–4 y la propia de A (franjas que
+corren con el scroll). El mapa de Urabá (5) queda para una segunda vuelta.
 
 ## Secciones (en este orden)
 

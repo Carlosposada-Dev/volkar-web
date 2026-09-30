@@ -8,9 +8,20 @@ Una volqueta con conductor para contratistas de obra civil y los proyectos portu
 
 ## Estado
 
-Fase de diseño. La exploración visual (3 direcciones, artboards móvil y escritorio) está en
+Dirección **A · Valla de vía** elegida e implementada en `src/` (Astro 5 + Tailwind 4). Faltan los datos
+reales (entre corchetes), las fotos, el video de la tolva y el mapa de Urabá (animación 5).
+La exploración visual (3 direcciones, artboards móvil y escritorio) está en
 [Claude Design](https://claude.ai/artifact/9URXSMbjwR2HfApJQJSYWp) y su fuente en `design/canvas/`.
 El brief, las paletas, las fuentes y las propuestas de animación están en [`docs/diseno.md`](docs/diseno.md).
+
+## Dónde vive cada cosa
+
+| Qué | Dónde |
+|---|---|
+| Nombre de marca, contacto, copy y datos pendientes | `src/config/marca.ts` |
+| Tokens de color, tipografía y escala fluida | `src/styles/global.css` (`@theme`) |
+| Secciones de la landing | `src/components/*.astro`, en orden en `src/pages/index.astro` |
+| Animaciones con JS (odómetro, barra de WhatsApp, franjas) | `src/scripts/animaciones.ts` |
 
 ## Stack (decidido)
 
