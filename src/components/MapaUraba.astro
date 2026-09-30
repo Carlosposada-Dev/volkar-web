@@ -1,0 +1,97 @@
+---
+/**
+ * Mapa de Urabá (animación 5). Geometría aproximada a partir de coordenadas reales:
+ * x = (lon + 76.98) · 600, y = (8.72 − lat) · 600. Es un mapa de valla, no cartografía.
+ * - El golfo en negro con trama; la tierra en amarillo como placa levantada (bordes apilados hacia el mar).
+ * - La Serranía de Abibe al oriente, con curvas de nivel: el "relieve".
+ * - La vía Chigorodó → Necoclí se traza con el scroll (stroke-dashoffset) y cada municipio se
+ *   enciende cuando la vía pasa por él (animaciones.ts). Tocar o pasar por un municipio lo resalta.
+ * Sin JS o con reduced-motion: vía completa y todos los municipios encendidos.
+ */
+import { cobertura } from '../config/marca';
+
+interface Props {
+  class?: string;
+}
+const { class: clase = '' } = Astro.props;
+
+// Posición en el viewBox y fracción del recorrido de la vía en la que se enciende cada municipio.
+const puntos: Record<string, { x: number; y: number; en: number }> = {
+  Chigorodó: { x: 180, y: 630, en: 0 },
+  Carepa: { x: 192, y: 576, en: 0.1 },
+  Apartadó: { x: 210, y: 504, en: 0.24 },
+  Turbo: { x: 150, y: 378, en: 0.58 },
+  Necoclí: { x: 120, y: 174, en: 0.97 },
+};
+const municipios = cobertura.municipios.map((m) => ({ nombre: m, ...puntos[m]! }));
+
+// Contorno de la tierra: costa desde el Caribe, Punta Caribana, Necoclí, Turbo y el fondo del golfo (delta del Atrato).
+const tierra =
+  'M138,0 C110,20 80,40 66,60 C50,90 90,140 120,174 C140,200 132,240 135,270 C140,320 140,350 150,378 C158,410 150,450 140,470 C120,485 90,480 60,470 C40,466 20,462 0,462 V800 H480 V0 Z';
+// Vía: Chigorodó → Carepa → Apartadó → Turbo → Necoclí.
+const via = 'M180,630 L192,576 L210,504 C195,460 170,420 150,378 C138,340 135,300 135,270 C133,235 130,200 120,174';
+// Curvas de nivel de la Serranía de Abibe (decorativas).
+const niveles = [
+  'M250,800 C285,660 300,540 290,420 C282,330 300,220 280,120 C272,80 262,40 250,0',
+  'M290,800 C325,650 340,520 330,400 C322,300 345,190 325,90 C318,55 308,25 300,0',
+  'M330,800 C365,650 380,520 370,400 C362,300 388,190 368,90 C361,55 350,25 340,0',
+  'M372,800 C405,660 418,540 408,420 C400,330 425,220 405,120 C397,80 388,40 380,0',
+  'M414,800 C445,670 456,550 446,430 C438,340 460,230 442,130 C435,90 426,45 420,0',
+  'M456,800 C480,690 484,580 476,470 C470,380 484,270 470,170',
+];
+---
+
+<svg
+  id="mapa-uraba"
+  class:list={['mapa', clase]}
+  viewBox="0 0 480 720"
+  role="group"
+  aria-label={`Mapa de Urabá con los municipios que cubrimos: ${cobertura.municipios.join(', ')}.`}
+>
+  <title>Mapa de Urabá</title>
+  <defs>
+    <pattern id="mar" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="8" class="mar-trama"></line>
+    </pattern>
+    <path id="tierra" d={tierra}></path>
+  </defs>
+
+  <!-- Golfo de Urabá y mar Caribe -->
+  <rect width="480" height="720" class="mar"></rect>
+  <rect width="480" height="720" fill="url(#mar)"></rect>
+
+  <!-- Placa de tierra levantada: dos bordes apilados hacia el mar y la tierra encima -->
+  <use href="#tierra" class="placa" transform="translate(-12 -12)"></use>
+  <use href="#tierra" class="placa" transform="translate(-6 -6)"></use>
+  <use href="#tierra" class="tierra"></use>
+
+  <!-- Relieve: Serranía de Abibe -->
+  <g class="niveles" aria-hidden="true">
+    {niveles.map((d) => <path d={d}></path>)}
+  </g>
+
+  <!-- Rótulos del mar -->
+  <g class="rotulo-mar" aria-hidden="true">
+    <text x="14" y="248">GOLFO DE</text>
+    <text x="14" y="268">URABÁ</text>
+    <text x="14" y="412">PROYECTOS</text>
+    <text x="14" y="432">PORTUARIOS</text>
+  </g>
+
+  <!-- Vía que se dibuja con el scroll -->
+  <path d={via} class="via-sombra" pathLength="1" aria-hidden="true"></path>
+  <path d={via} class="via" pathLength="1" aria-hidden="true"></path>
+
+  <!-- Municipios -->
+  {
+    municipios.map((m) => (
+      <g class="municipio" data-en={m.en} tabindex="0" role="button" aria-label={m.nombre} aria-pressed="false">
+        <circle cx={m.x} cy={m.y} r="22" class="anillo" />
+        <circle cx={m.x} cy={m.y} r="9" class="punto" />
+        <text x={m.x + 26} y={m.y} class="nombre">
+          {m.nombre}
+        </text>
+      </g>
+    ))
+  }
+</svg>

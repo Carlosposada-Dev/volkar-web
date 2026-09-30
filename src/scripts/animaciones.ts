@@ -90,6 +90,60 @@ function franjas() {
   pintar();
 }
 
+function mapa() {
+  const svg = document.getElementById('mapa-uraba');
+  if (!svg) return;
+  const municipios = Array.from(svg.querySelectorAll<SVGGElement>('.municipio'));
+
+  // Selección: toque, hover o foco resaltan el municipio. Un toque repetido lo suelta.
+  const activar = (m: SVGGElement, si: boolean) => {
+    m.classList.toggle('activo', si);
+    m.setAttribute('aria-pressed', String(si));
+  };
+  municipios.forEach((m) => {
+    m.addEventListener('pointerenter', () => activar(m, true));
+    m.addEventListener('pointerleave', () => activar(m, false));
+    m.addEventListener('click', () => {
+      const ya = m.classList.contains('activo');
+      municipios.forEach((o) => activar(o, false));
+      if (!ya) activar(m, true);
+    });
+    m.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        m.click();
+      }
+    });
+  });
+
+  if (reducido) {
+    svg.style.setProperty('--progreso', '0');
+    municipios.forEach((m) => m.classList.add('encendido'));
+    return;
+  }
+
+  // La vía se dibuja mientras el mapa cruza la ventana; cada municipio se enciende cuando la vía llega.
+  let pendiente = false;
+  const pintar = () => {
+    pendiente = false;
+    const r = svg.getBoundingClientRect();
+    const alto = window.innerHeight;
+    // 0 cuando el mapa asoma por abajo (90 % de la ventana), 1 cuando su borde inferior llega al 95 %.
+    const p = Math.min(1, Math.max(0, (alto * 0.9 - r.top) / Math.max(1, r.height - alto * 0.05)));
+    svg.style.setProperty('--progreso', (1 - p).toFixed(3));
+    municipios.forEach((m) => m.classList.toggle('encendido', p >= Number(m.dataset.en) + 0.03));
+  };
+  const alScroll = () => {
+    if (pendiente) return;
+    pendiente = true;
+    requestAnimationFrame(pintar);
+  };
+  addEventListener('scroll', alScroll, { passive: true });
+  addEventListener('resize', alScroll, { passive: true });
+  pintar();
+}
+
 odometro();
 barraWhatsApp();
 franjas();
+mapa();

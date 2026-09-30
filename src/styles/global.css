@@ -286,6 +286,124 @@ html.js .odo-tira.rodando {
   }
 }
 
+/* 5 · Mapa de Urabá dibujado con el scroll. Estilos en un solo lugar; la geometría está en MapaUraba.astro. */
+.mapa {
+  display: block;
+  overflow: hidden;
+  font-family: var(--font-display);
+}
+.mapa .mar {
+  fill: var(--color-negro);
+}
+.mapa .mar-trama {
+  stroke: var(--color-amarillo);
+  stroke-width: 1;
+  opacity: 0.3;
+}
+.mapa .placa {
+  fill: var(--color-negro);
+  stroke: var(--color-amarillo);
+  stroke-width: 2;
+}
+.mapa .tierra {
+  fill: var(--color-amarillo);
+  stroke: var(--color-negro);
+  stroke-width: 3;
+}
+.mapa .niveles path {
+  fill: none;
+  stroke: var(--color-negro);
+  stroke-width: 1.5;
+  opacity: 0.55;
+}
+.mapa .rotulo-mar text {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 15px;
+  fill: var(--color-amarillo);
+}
+.mapa .via-sombra,
+.mapa .via {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mapa .via-sombra {
+  stroke: var(--color-amarillo);
+  stroke-width: 12;
+}
+.mapa .via {
+  stroke: var(--color-negro);
+  stroke-width: 6;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0; /* sin JS: vía completa */
+}
+html.js .mapa .via {
+  stroke-dashoffset: var(--progreso, 1); /* 1 = nada dibujado, 0 = completa */
+}
+.mapa .municipio {
+  cursor: pointer;
+  outline: none;
+}
+.mapa .punto {
+  fill: var(--color-negro);
+  stroke: var(--color-amarillo);
+  stroke-width: 3;
+}
+.mapa .anillo {
+  fill: none;
+  stroke: var(--color-negro);
+  stroke-width: 3;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.3);
+  opacity: 0;
+  transition:
+    transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.55s;
+}
+.mapa .nombre {
+  font-weight: 800;
+  font-size: 34px;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  dominant-baseline: middle;
+  fill: var(--color-negro);
+  paint-order: stroke;
+  stroke: var(--color-amarillo);
+  stroke-width: 6;
+  stroke-linejoin: round;
+  opacity: 0.3;
+  transition: opacity 0.4s;
+}
+.mapa .municipio.encendido .anillo,
+html:not(.js) .mapa .anillo {
+  transform: scale(1);
+  opacity: 1;
+}
+.mapa .municipio.encendido .nombre,
+html:not(.js) .mapa .nombre {
+  opacity: 1;
+}
+/* Seleccionado (toque, hover o foco): nombre invertido y punto más grande */
+.mapa .municipio.activo .nombre,
+.mapa .municipio:focus-visible .nombre {
+  fill: var(--color-amarillo);
+  stroke: var(--color-negro);
+  stroke-width: 10;
+  opacity: 1;
+}
+.mapa .municipio.activo .punto,
+.mapa .municipio:focus-visible .punto {
+  r: 13;
+}
+.mapa .municipio.activo .anillo,
+.mapa .municipio:focus-visible .anillo {
+  stroke-width: 5;
+  transform: scale(1.25);
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rv {
     opacity: 1;
@@ -309,5 +427,14 @@ html.js .odo-tira.rodando {
   html.js .franjas {
     animation: none;
     background-position-x: 0;
+  }
+  html.js .mapa .via {
+    stroke-dashoffset: 0;
+  }
+  .mapa .anillo,
+  .mapa .nombre {
+    transition: none;
+    transform: scale(1);
+    opacity: 1;
   }
 }

@@ -11,8 +11,8 @@ obra: la página se lee desde lejos, en amarillo alta visibilidad y negro, con c
 mayúsculas. Las direcciones B y C quedan documentadas abajo como referencia; no se implementan.
 
 Implementación: `src/` (Astro 5 + Tailwind 4). Tokens en `src/styles/global.css` (`@theme`), copy y datos
-pendientes en `src/config/marca.ts`. Animaciones implementadas: base 1–4 y la propia de A (franjas que
-corren con el scroll). El mapa de Urabá (5) queda para una segunda vuelta.
+pendientes en `src/config/marca.ts`. Animaciones implementadas: base 1–4, la propia de A (franjas que
+corren con el scroll) y el mapa de Urabá (5, en `src/components/MapaUraba.astro`).
 
 ## Secciones (en este orden)
 
@@ -124,5 +124,11 @@ Segunda vuelta (más trabajo):
 
 5. **Mapa de Urabá dibujado al hacer scroll.** La vía entre Chigorodó y Necoclí se traza con
    `stroke-dashoffset` mientras se baja y cada municipio se enciende al pasar. Reemplaza la lista.
+   **Hecho (2026-09-30).** El fundador pidió relieve "como 3D"; se resolvió en el lenguaje de la valla y
+   no con terreno real: el golfo en negro con trama, la tierra en amarillo como placa levantada (bordes
+   apilados hacia el mar), la Serranía de Abibe con curvas de nivel. Un 3D real (WebGL + datos de
+   elevación) exigiría una librería, pesaría en celular y se saldría de la dirección A. Tocar, pasar o
+   enfocar un municipio lo resalta (nombre invertido). Geometría aproximada a coordenadas reales; es un
+   mapa de valla, no cartografía. Sin JS o con reduced-motion: vía completa y todo encendido.
 
 Lo que no se hace: hover en cada tarjeta, parallax en todo, degradados, partículas, íconos de camión.
