@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<title>VOLKAR — wordmark A, Valla de vía</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+:root{--amarillo:#F5C400;--negro:#000000;--blanco:#FFFFFF;--display:'Big Shoulders Display',Impact,sans-serif;--mono:'JetBrains Mono',monospace}
+body{margin:0;font-family:'JetBrains Mono',monospace;background:#F5C400;color:#000}
+a{color:inherit}a:hover{color:inherit}
+.franjas{background:repeating-linear-gradient(-45deg,#000 0 10px,#F5C400 10px 20px)}
+</style>
+</helmet>
+<div style="width: 720px; height: 480px; box-sizing: border-box; overflow: hidden; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: 300px 180px; background: var(--amarillo); color: var(--negro); font-family: var(--mono)">
+
+  <div style="grid-column: 1 / span 2; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 32px 40px 24px; gap: 14px; position: relative">
+    <span style="font-family: var(--display); font-weight: 900; font-size: 190px; line-height: 0.8; letter-spacing: -0.025em; transform: skewX(-8deg); transform-origin: left bottom; margin-left: 12px">VOLKAR</span>
+    <div style="display: flex; align-items: center; gap: 14px; width: 100%">
+      <div class="franjas" style="height: 16px; flex-grow: 1"></div>
+      <span style="font-family: var(--display); font-weight: 300; font-size: 30px; line-height: 1; letter-spacing: 0.18em; text-transform: uppercase">Urabá</span>
+    </div>
+    <span style="position: absolute; top: 12px; left: 40px; font-size: 11px; font-weight: 700">WORDMARK A · inclinado 8°, franja de obra como base. La franja se puede omitir en tamaños chicos.</span>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 20px; padding: 0 40px; background: var(--blanco); border-top: 3px solid var(--negro)">
+    <span style="font-family: var(--display); font-weight: 900; font-size: 84px; line-height: 0.8; letter-spacing: -0.025em; transform: skewX(-8deg); color: var(--negro)">VOLKAR</span>
+    <span style="font-size: 11px; font-weight: 700; max-width: 12ch; line-height: 1.4">UNA TINTA · puerta de la volqueta, bordado en gorra</span>
+  </div>
+
+  <div style="display: flex; align-items: center; justify-content: space-around; padding: 0 30px; background: var(--negro); color: var(--amarillo); border-top: 3px solid var(--negro)">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <div style="width: 96px; height: 96px; border-radius: 50%; background: var(--amarillo); color: var(--negro); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 900; font-size: 60px; line-height: 1; letter-spacing: -0.03em; transform: skewX(-8deg)">VK</div>
+      <span style="font-size: 10px; font-weight: 700">AVATAR WHATSAPP</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--amarillo); color: var(--negro); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 900; font-size: 25px; line-height: 1; letter-spacing: -0.03em; transform: skewX(-8deg)">VK</div>
+      <span style="font-size: 10px; font-weight: 700">40 px</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <div style="height: 44px; padding: 0 12px; background: var(--amarillo); color: var(--negro); display: flex; align-items: center; font-family: var(--display); font-weight: 900; font-size: 34px; line-height: 1; letter-spacing: -0.02em; transform: skewX(-8deg)">VOLKAR</div>
+      <span style="font-size: 10px; font-weight: 700">PARCHE GORRA</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":720,"height":480}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

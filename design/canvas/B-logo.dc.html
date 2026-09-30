@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<title>VOLKAR — wordmark B, Fierro y tierra</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@200;300&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{--acero:#1C1A17;--acero-claro:#2A2723;--hueso:#EDE6DA;--ocre:#C8783A;--oxido:#6E3A1E;--naranja:#FF6A13;--display:'Barlow Condensed',Impact,sans-serif;--texto:'Barlow',sans-serif;--mono:'IBM Plex Mono',monospace}
+body{margin:0;font-family:'IBM Plex Mono',monospace;background:#1C1A17;color:#EDE6DA}
+a{color:inherit}a:hover{color:inherit}
+</style>
+</helmet>
+<div style="width: 720px; height: 480px; box-sizing: border-box; overflow: hidden; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: 300px 180px; background: var(--acero); color: var(--hueso); font-family: var(--mono)">
+
+  <div style="grid-column: 1 / span 2; display: flex; flex-direction: column; justify-content: center; padding: 32px 40px 24px; gap: 10px; position: relative; border-bottom: 1px solid var(--oxido)">
+    <div style="display: flex; align-items: baseline; gap: 6px">
+      <span style="font-family: var(--display); font-weight: 900; font-size: 196px; line-height: 0.8; letter-spacing: -0.02em; color: var(--hueso)">VOLKAR</span>
+      <span style="width: 34px; height: 34px; background: var(--naranja); flex-shrink: 0; align-self: flex-end; margin-bottom: 6px"></span>
+    </div>
+    <span style="font-family: var(--texto); font-weight: 200; font-size: 26px; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ocre)">Movimiento de tierras · Urabá</span>
+    <span style="position: absolute; top: 12px; left: 40px; font-size: 11px; font-weight: 600; color: var(--ocre)">WORDMARK B · el cuadro naranja es el punto: la única pieza de color de la marca.</span>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 20px; padding: 0 40px; background: var(--hueso); color: var(--acero)">
+    <div style="display: flex; align-items: baseline; gap: 4px">
+      <span style="font-family: var(--display); font-weight: 900; font-size: 80px; line-height: 0.8; letter-spacing: -0.02em">VOLKAR</span>
+      <span style="width: 14px; height: 14px; background: var(--acero); align-self: flex-end; margin-bottom: 3px"></span>
+    </div>
+    <span style="font-size: 11px; font-weight: 600; max-width: 12ch; line-height: 1.4">UNA TINTA · puerta, gorra, sello</span>
+  </div>
+
+  <div style="display: flex; align-items: center; justify-content: space-around; padding: 0 30px; background: var(--acero-claro)">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <div style="width: 96px; height: 96px; border-radius: 50%; background: var(--hueso); color: var(--acero); display: flex; align-items: baseline; justify-content: center; padding-top: 22px; box-sizing: border-box; gap: 3px">
+        <span style="font-family: var(--display); font-weight: 900; font-size: 56px; line-height: 0.8; letter-spacing: -0.03em">VK</span>
+        <span style="width: 10px; height: 10px; background: var(--naranja); align-self: flex-end; margin-bottom: 1px"></span>
+      </div>
+      <span style="font-size: 10px; font-weight: 600; color: var(--ocre)">AVATAR WHATSAPP</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--hueso); color: var(--acero); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 900; font-size: 24px; line-height: 1; letter-spacing: -0.03em">VK</div>
+      <span style="font-size: 10px; font-weight: 600; color: var(--ocre)">40 px</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <div style="height: 44px; padding: 0 12px; border: 2px solid var(--hueso); color: var(--hueso); display: flex; align-items: baseline; gap: 4px; padding-top: 8px; box-sizing: border-box">
+        <span style="font-family: var(--display); font-weight: 900; font-size: 30px; line-height: 0.8">VOLKAR</span>
+        <span style="width: 6px; height: 6px; background: var(--naranja); align-self: flex-end; margin-bottom: 1px"></span>
+      </div>
+      <span style="font-size: 10px; font-weight: 600; color: var(--ocre)">PARCHE GORRA</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":720,"height":480}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

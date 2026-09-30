@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<title>VOLKAR — wordmark C, Muelle</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{--marino:#0F2740;--oxido:#A3412B;--concreto:#E9E7E2;--concreto-2:#C9C6BF;--niebla:#B7C4D1;--blanco:#FFFFFF;--display:'Archivo',sans-serif;--mono:'IBM Plex Mono',monospace}
+body{margin:0;font-family:'IBM Plex Mono',monospace;background:#E9E7E2;color:#0F2740}
+a{color:inherit}a:hover{color:inherit}
+.corr{background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 2px,transparent 2px 14px)}
+</style>
+</helmet>
+<div style="width: 720px; height: 480px; box-sizing: border-box; overflow: hidden; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: 300px 180px; background: var(--concreto); color: var(--marino); font-family: var(--mono)">
+
+  <div style="grid-column: 1 / span 2; display: flex; align-items: center; gap: 28px; padding: 32px 40px 24px; position: relative">
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <div class="corr" style="background-color: var(--marino); color: var(--blanco); padding: 10px 22px 4px; font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 92px; line-height: 0.82; letter-spacing: 0.02em">VOL</div>
+      <div class="corr" style="background-color: var(--oxido); color: var(--blanco); padding: 10px 22px 4px; font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 92px; line-height: 0.82; letter-spacing: 0.02em">KAR</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-family: var(--display); font-weight: 300; font-size: 22px; line-height: 1.2; max-width: 14ch">
+      <span>Movimiento de tierras y transporte</span>
+      <span style="font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.1em">URABÁ · CO</span>
+    </div>
+    <span style="position: absolute; top: 12px; left: 40px; font-size: 11px; font-weight: 600">WORDMARK C · dos bloques apilados como contenedores en patio. En una tinta, los bloques van en contorno.</span>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 20px; padding: 0 40px; background: var(--blanco); border-top: 2px solid var(--marino)">
+    <div style="display: flex; flex-direction: column; gap: 3px">
+      <div style="border: 3px solid var(--marino); padding: 4px 10px 1px; font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 40px; line-height: 0.82; letter-spacing: 0.02em">VOL</div>
+      <div style="border: 3px solid var(--marino); padding: 4px 10px 1px; font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 40px; line-height: 0.82; letter-spacing: 0.02em">KAR</div>
+    </div>
+    <span style="font-size: 11px; font-weight: 600; max-width: 14ch; line-height: 1.4">UNA TINTA · puerta, gorra, membrete de cotización</span>
+  </div>
+
+  <div style="display: flex; align-items: center; justify-content: space-around; padding: 0 30px; background: var(--marino); color: var(--blanco); border-top: 2px solid var(--marino)">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <div style="width: 96px; height: 96px; border-radius: 50%; background: var(--blanco); color: var(--marino); display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 30px; line-height: 0.9; letter-spacing: 0.02em"><span>VOL</span><span style="color: var(--oxido)">KAR</span></div>
+      <span style="font-size: 10px; font-weight: 600; color: var(--niebla)">AVATAR WHATSAPP</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--blanco); color: var(--marino); display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 12px; line-height: 0.95; letter-spacing: 0.02em"><span>VOL</span><span style="color: var(--oxido)">KAR</span></div>
+      <span style="font-size: 10px; font-weight: 600; color: var(--niebla)">40 px</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <div style="height: 44px; padding: 0 12px; border: 2px solid var(--blanco); display: flex; align-items: center; font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 24px; line-height: 1; letter-spacing: 0.02em">VOLKAR</div>
+      <span style="font-size: 10px; font-weight: 600; color: var(--niebla)">PARCHE GORRA</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":720,"height":480}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
