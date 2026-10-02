@@ -1,7 +1,17 @@
 ---
+// Tema A · Valla de vía
 import '@fontsource-variable/big-shoulders-display/wght';
 import '@fontsource-variable/archivo/wght';
 import '@fontsource-variable/jetbrains-mono/wght';
+// Tema B · Fierro y tierra (sólo se descargan si el tema B está activo: @font-face es perezoso)
+import '@fontsource/barlow-condensed/700.css';
+import '@fontsource/barlow-condensed/800.css';
+import '@fontsource/barlow-condensed/900.css';
+import '@fontsource/barlow/200.css';
+import '@fontsource/barlow/300.css';
+import '@fontsource/barlow/400.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/700.css';
 import '../styles/global.css';
 import { marca } from '../config/marca';
 
@@ -29,9 +39,17 @@ const { titulo = `${marca.nombre} · ${marca.lema}`, descripcion = marca.descrip
     <!-- Marca el documento como "con JS" antes de pintar: los estados iniciales de animación dependen de esto. -->
     <script is:inline>
       document.documentElement.classList.add('js');
+      // Vista previa de temas: ?tema=b activa "Fierro y tierra", ?tema=a vuelve a "Valla de vía".
+      // La elección queda guardada en este navegador. Sólo para comparar; no es un selector público.
+      try {
+        var t = new URLSearchParams(location.search).get('tema');
+        if (t === 'a' || t === 'b') localStorage.setItem('tema', t);
+        var g = localStorage.getItem('tema');
+        if (g && g !== 'a') document.documentElement.dataset.tema = g;
+      } catch (e) {}
     </script>
   </head>
-  <body class="bg-amarillo text-negro font-texto antialiased">
+  <body class="bg-fondo text-tinta font-texto antialiased">
     <slot />
     <script src="../scripts/animaciones.ts"></script>
   </body>

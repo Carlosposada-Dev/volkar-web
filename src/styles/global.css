@@ -1,19 +1,26 @@
 @import 'tailwindcss';
 
 /* ------------------------------------------------------------------
-   Tokens de la dirección A · Valla de vía (ver docs/diseno.md).
-   Fuente: design/canvas/A-movil.dc.html y A-escritorio.dc.html.
+   Paletas crudas (ver docs/diseno.md). Los componentes NO usan estos nombres:
+   usan los tokens semánticos de más abajo (fondo, tinta, título, botón…),
+   y cada tema asigna la paleta a esos roles.
    ------------------------------------------------------------------ */
 @theme {
+  /* A · Valla de vía */
   --color-amarillo: #f5c400;
   --color-negro: #000000;
   --color-blanco: #ffffff;
   --color-tinta-suave: #333333; /* texto secundario sobre amarillo, 7.7:1 */
   --color-gris-claro: #b3b3b3; /* texto secundario sobre negro, 10:1 */
 
-  --font-display: 'Big Shoulders Display Variable', Impact, sans-serif;
-  --font-texto: 'Archivo Variable', sans-serif;
-  --font-mono: 'JetBrains Mono Variable', monospace;
+  /* B · Fierro y tierra */
+  --color-acero: #1c1a17;
+  --color-acero-claro: #2a2723;
+  --color-hueso: #ede6da; /* texto, 13.9:1 */
+  --color-hueso-suave: #c9c0b1; /* texto secundario sobre acero, ~9:1 */
+  --color-ocre: #c8783a; /* títulos y números, 5.1:1 */
+  --color-oxido: #6e3a1e;
+  --color-naranja: #ff6a13; /* único acento: botones y un número, 6.1:1 */
 
   /* Escala fluida: 390 px → 1440 px, valores tomados de los dos artboards. */
   --text-h1: clamp(6.75rem, 3.04rem + 15.24vw, 16.75rem); /* 108 → 268 */
@@ -32,11 +39,152 @@
   --spacing-gutter: clamp(1.25rem, 0.23rem + 4.19vw, 4rem); /* 20 → 64 */
 }
 
+/* Tokens semánticos como utilidades de Tailwind (bg-fondo, text-tinta, border-linea…).
+   `inline` hace que la utilidad escriba var(--fondo) y así respete el valor de la sección o el tema. */
+@theme inline {
+  --color-fondo: var(--fondo);
+  --color-tinta: var(--tinta);
+  --color-tinta-2: var(--tinta-2);
+  --color-titulo: var(--titulo);
+  --color-linea: var(--linea);
+  --color-realce: var(--realce);
+  --color-boton: var(--boton-fondo);
+  --color-boton-tinta: var(--boton-tinta);
+  --color-sello: var(--sello-fondo);
+  --color-cifra-tinta: var(--cifra);
+
+  --font-display: var(--fuente-display);
+  --font-texto: var(--fuente-texto);
+  --font-mono: var(--fuente-mono);
+}
+
+/* ------------------------------------------------------------------
+   Tema A · Valla de vía (por defecto). Secciones claras = amarillo; `.oscura` = negro.
+   ------------------------------------------------------------------ */
+:root {
+  --fuente-display: 'Big Shoulders Display Variable', Impact, sans-serif;
+  --fuente-texto: 'Archivo Variable', sans-serif;
+  --fuente-mono: 'JetBrains Mono Variable', monospace;
+
+  --fondo: var(--color-amarillo);
+  --tinta: var(--color-negro);
+  --tinta-2: var(--color-tinta-suave);
+  --titulo: var(--color-negro);
+  --linea: var(--color-negro);
+  --realce: var(--color-negro);
+  --boton-fondo: var(--color-negro);
+  --boton-tinta: var(--color-amarillo);
+  --cifra: var(--color-negro);
+
+  /* Globales del tema */
+  --sello-fondo: var(--color-negro); /* etiquetas "FOTO REAL" */
+  --sello-tinta: var(--color-amarillo);
+  --placeholder-borde: var(--color-negro);
+  --franja-1: var(--color-negro);
+  --franja-2: var(--color-amarillo);
+  --seleccion-fondo: var(--color-negro);
+  --seleccion-tinta: var(--color-amarillo);
+
+  --mapa-mar: var(--color-negro);
+  --mapa-tierra: var(--color-amarillo);
+  --mapa-tinta: var(--color-negro);
+  --mapa-trazo: var(--color-amarillo);
+  --mapa-via: var(--color-negro);
+}
+.oscura {
+  --fondo: var(--color-negro);
+  --tinta: var(--color-blanco);
+  --tinta-2: var(--color-gris-claro);
+  --titulo: var(--color-amarillo);
+  --linea: var(--color-amarillo);
+  --realce: var(--color-amarillo);
+  --boton-fondo: var(--color-amarillo);
+  --boton-tinta: var(--color-negro);
+  background: var(--fondo);
+  color: var(--tinta);
+}
+
+/* ------------------------------------------------------------------
+   Tema B · Fierro y tierra. Se activa con ?tema=b (ver Base.astro).
+   Acero casi negro, hueso para texto, ocre para títulos, naranja como único acento.
+   Pendiente si se elige: el barrido de luz sobre la ficha técnica.
+   ------------------------------------------------------------------ */
+:root[data-tema='b'] {
+  --fuente-display: 'Barlow Condensed', Impact, sans-serif;
+  --fuente-texto: 'Barlow', sans-serif;
+  --fuente-mono: 'IBM Plex Mono', monospace;
+
+  --fondo: var(--color-acero);
+  --tinta: var(--color-hueso);
+  --tinta-2: var(--color-hueso-suave);
+  --titulo: var(--color-ocre);
+  --linea: var(--color-oxido);
+  --realce: var(--color-ocre);
+  --boton-fondo: var(--color-naranja);
+  --boton-tinta: var(--color-acero);
+  --cifra: var(--color-naranja);
+
+  --sello-fondo: var(--color-ocre);
+  --sello-tinta: var(--color-acero);
+  --placeholder-borde: var(--color-ocre);
+  --franja-1: var(--color-oxido);
+  --franja-2: var(--color-acero-claro);
+  --seleccion-fondo: var(--color-naranja);
+  --seleccion-tinta: var(--color-acero);
+
+  --mapa-mar: var(--color-acero);
+  --mapa-tierra: var(--color-oxido);
+  --mapa-tinta: var(--color-hueso);
+  --mapa-trazo: var(--color-ocre);
+  --mapa-via: var(--color-naranja);
+
+  /* Barlow Condensed es más ancha que Big Shoulders: las cifras bajan un 15 % para caber a 390 px. */
+  --text-cifra: clamp(8rem, 4.4rem + 14.5vw, 17.5rem); /* 128 → 280 */
+  --text-cifra-2: clamp(5.1rem, 3rem + 8.4vw, 10.6rem); /* 82 → 170 */
+}
+:root[data-tema='b'] header {
+  border-bottom-width: 1px;
+}
+:root[data-tema='b'] .oscura {
+  --fondo: var(--color-acero-claro);
+  --tinta: var(--color-hueso);
+  --tinta-2: var(--color-hueso-suave);
+  --titulo: var(--color-ocre);
+  --linea: var(--color-oxido);
+  --realce: var(--color-ocre);
+  --boton-fondo: var(--color-naranja);
+  --boton-tinta: var(--color-acero);
+}
+/* En B el wordmark va recto, con un cuadro naranja como punto; la franja es chapa, no cebra. */
+:root[data-tema='b'] .wordmark {
+  transform: none;
+  letter-spacing: -0.02em;
+}
+:root[data-tema='b'] .wordmark::after {
+  content: '';
+  display: inline-block;
+  width: 0.18em;
+  height: 0.18em;
+  margin-left: 0.06em;
+  background: var(--color-naranja);
+  vertical-align: baseline;
+}
+:root[data-tema='b'] .franjas {
+  background-color: var(--color-acero-claro);
+  background-image: repeating-linear-gradient(180deg, rgb(237 230 218 / 0.08) 0 1px, transparent 1px 6px);
+  background-position-x: 0;
+  border-block: 1px solid var(--color-oxido);
+  animation: none;
+}
+:root[data-tema='b'] .t-mono {
+  font-weight: 600;
+}
+
 @layer base {
   html {
-    background: var(--color-amarillo);
-    color: var(--color-negro);
-    font-family: var(--font-texto);
+    background: var(--fondo);
+    color: var(--tinta);
+    font-family: var(--fuente-texto);
     -webkit-text-size-adjust: 100%;
   }
   @media (prefers-reduced-motion: no-preference) {
@@ -53,15 +201,15 @@
     outline-offset: 3px;
   }
   ::selection {
-    background: var(--color-negro);
-    color: var(--color-amarillo);
+    background: var(--seleccion-fondo);
+    color: var(--seleccion-tinta);
   }
 }
 
 @layer components {
   /* Tipografía de valla */
   .t-h2 {
-    font-family: var(--font-display);
+    font-family: var(--fuente-display);
     font-weight: 900;
     font-size: var(--text-h2);
     line-height: 0.88;
@@ -69,21 +217,21 @@
     letter-spacing: -0.01em;
   }
   .t-h3 {
-    font-family: var(--font-display);
+    font-family: var(--fuente-display);
     font-weight: 800;
     font-size: var(--text-h3);
     line-height: 0.98;
     text-transform: uppercase;
   }
   .t-mono {
-    font-family: var(--font-mono);
+    font-family: var(--fuente-mono);
     font-weight: 700;
     letter-spacing: 0.01em;
   }
 
   /* Wordmark inclinado 8° */
   .wordmark {
-    font-family: var(--font-display);
+    font-family: var(--fuente-display);
     font-weight: 900;
     line-height: 1;
     letter-spacing: -0.02em;
@@ -91,6 +239,7 @@
     transform: skewX(-8deg);
     transform-origin: left bottom;
     display: inline-block;
+    white-space: nowrap;
   }
 
   /* Botón de valla */
@@ -99,7 +248,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5em;
-    font-family: var(--font-display);
+    font-family: var(--fuente-display);
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.03em;
@@ -120,8 +269,8 @@
     height: 22px;
     background-image: repeating-linear-gradient(
       -45deg,
-      var(--color-negro) 0 var(--paso),
-      var(--color-amarillo) var(--paso) calc(var(--paso) * 2)
+      var(--franja-1) 0 var(--paso),
+      var(--franja-2) var(--paso) calc(var(--paso) * 2)
     );
     background-position-x: var(--corrida, 0px);
   }
@@ -134,24 +283,24 @@
 
   /* Placeholder de foto/video real: nunca stock */
   .placeholder-real {
-    border: 3px dashed var(--color-negro);
+    border: 3px dashed var(--placeholder-borde);
     display: flex;
     align-items: flex-end;
     box-sizing: border-box;
     padding: 12px;
   }
   .placeholder-real > .etiqueta {
-    font-family: var(--font-mono);
+    font-family: var(--fuente-mono);
     font-weight: 700;
     font-size: 12px;
-    background: var(--color-negro);
-    color: var(--color-amarillo);
+    background: var(--sello-fondo);
+    color: var(--sello-tinta);
     padding: 4px 8px;
   }
 
   /* Ficha técnica y datos de contacto en monoespaciada */
   .ficha {
-    font-family: var(--font-mono);
+    font-family: var(--fuente-mono);
     font-size: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
   }
   .ficha > div {
@@ -261,10 +410,10 @@ html.js .odo-tira.rodando {
 }
 @keyframes pulso {
   0% {
-    box-shadow: 0 0 0 0 rgb(245 196 0 / 0.9);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--boton-fondo) 90%, transparent);
   }
   100% {
-    box-shadow: 0 0 0 18px rgb(245 196 0 / 0);
+    box-shadow: 0 0 0 18px color-mix(in srgb, var(--boton-fondo) 0%, transparent);
   }
 }
 
@@ -290,37 +439,37 @@ html.js .odo-tira.rodando {
 .mapa {
   display: block;
   overflow: hidden;
-  font-family: var(--font-display);
+  font-family: var(--fuente-display);
 }
 .mapa .mar {
-  fill: var(--color-negro);
+  fill: var(--mapa-mar);
 }
 .mapa .mar-trama {
-  stroke: var(--color-amarillo);
+  stroke: var(--mapa-trazo);
   stroke-width: 1;
   opacity: 0.3;
 }
 .mapa .placa {
-  fill: var(--color-negro);
-  stroke: var(--color-amarillo);
+  fill: var(--mapa-mar);
+  stroke: var(--mapa-trazo);
   stroke-width: 2;
 }
 .mapa .tierra {
-  fill: var(--color-amarillo);
-  stroke: var(--color-negro);
+  fill: var(--mapa-tierra);
+  stroke: var(--mapa-tinta);
   stroke-width: 3;
 }
 .mapa .niveles path {
   fill: none;
-  stroke: var(--color-negro);
+  stroke: var(--mapa-tinta);
   stroke-width: 1.5;
   opacity: 0.55;
 }
 .mapa .rotulo-mar text {
-  font-family: var(--font-mono);
+  font-family: var(--fuente-mono);
   font-weight: 700;
   font-size: 15px;
-  fill: var(--color-amarillo);
+  fill: var(--mapa-trazo);
 }
 .mapa .via-sombra,
 .mapa .via {
@@ -329,11 +478,11 @@ html.js .odo-tira.rodando {
   stroke-linejoin: round;
 }
 .mapa .via-sombra {
-  stroke: var(--color-amarillo);
+  stroke: var(--mapa-tierra);
   stroke-width: 12;
 }
 .mapa .via {
-  stroke: var(--color-negro);
+  stroke: var(--mapa-via);
   stroke-width: 6;
   stroke-dasharray: 1;
   stroke-dashoffset: 0; /* sin JS: vía completa */
@@ -346,13 +495,13 @@ html.js .mapa .via {
   outline: none;
 }
 .mapa .punto {
-  fill: var(--color-negro);
-  stroke: var(--color-amarillo);
+  fill: var(--mapa-via);
+  stroke: var(--mapa-tierra);
   stroke-width: 3;
 }
 .mapa .anillo {
   fill: none;
-  stroke: var(--color-negro);
+  stroke: var(--mapa-via);
   stroke-width: 3;
   transform-box: fill-box;
   transform-origin: center;
@@ -368,9 +517,9 @@ html.js .mapa .via {
   text-transform: uppercase;
   letter-spacing: 0.01em;
   dominant-baseline: middle;
-  fill: var(--color-negro);
+  fill: var(--mapa-tinta);
   paint-order: stroke;
-  stroke: var(--color-amarillo);
+  stroke: var(--mapa-tierra);
   stroke-width: 6;
   stroke-linejoin: round;
   opacity: 0.3;
@@ -388,8 +537,8 @@ html:not(.js) .mapa .nombre {
 /* Seleccionado (toque, hover o foco): nombre invertido y punto más grande */
 .mapa .municipio.activo .nombre,
 .mapa .municipio:focus-visible .nombre {
-  fill: var(--color-amarillo);
-  stroke: var(--color-negro);
+  fill: var(--mapa-tierra);
+  stroke: var(--mapa-tinta);
   stroke-width: 10;
   opacity: 1;
 }

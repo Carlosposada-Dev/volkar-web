@@ -15,7 +15,7 @@ import { volqueta } from '../config/marca';
         <Odometro
           valor={volqueta.capacidadM3.valor}
           confirmado={volqueta.capacidadM3.confirmado}
-          class="font-display font-black text-cifra tracking-[-0.03em] lg:tracking-[-0.04em]"
+          class="font-display font-black text-cifra text-cifra-tinta tracking-[-0.03em] lg:tracking-[-0.04em]"
         />
         <span class="t-mono text-[14px] lg:text-[16px] mt-2 lg:mt-3">{volqueta.capacidadM3.unidad}</span>
       </div>
@@ -31,16 +31,16 @@ import { volqueta } from '../config/marca';
   </div>
 
   <div class="flex flex-col gap-3">
-    <dl class="ficha m-0 border-t-[3px] border-negro mt-2 lg:mt-0">
+    <dl class="ficha m-0 border-t-[3px] border-linea mt-2 lg:mt-0">
       {
         volqueta.ficha.map((f) => (
           <div>
-            <dt class="text-tinta-suave">{f.campo}</dt>
+            <dt class="text-tinta-2">{f.campo}</dt>
             <dd class="m-0 font-bold text-right">{f.valor}</dd>
           </div>
         ))
       }
     </dl>
-    <p class="m-0 text-[13px] lg:text-[14px] text-tinta-suave">{volqueta.nota}</p>
+    <p class="m-0 text-[13px] lg:text-[14px] text-tinta-2">{volqueta.nota}</p>
   </div>
 </section>

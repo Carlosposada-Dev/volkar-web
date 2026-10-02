@@ -17,11 +17,11 @@ import { marca, hero } from '../config/marca';
 
     <p class="rv d1 m-0 font-display font-bold text-lema leading-[0.95] uppercase lg:max-w-[14ch]">{marca.lema}</p>
 
-    <p class="rv d2 m-0 text-cuerpo leading-[1.45] lg:leading-[1.5] text-tinta-suave max-w-[32ch] lg:max-w-[44ch]">
+    <p class="rv d2 m-0 text-cuerpo leading-[1.45] lg:leading-[1.5] text-tinta-2 max-w-[32ch] lg:max-w-[44ch]">
       {marca.descripcion}
     </p>
 
-    <a href="#contacto" class="rv d3 boton boton-cta bg-negro text-amarillo lg:self-start">
+    <a href="#contacto" class="rv d3 boton boton-cta bg-boton text-boton-tinta lg:self-start">
       <IconoWhatsApp tamano={28} />
       Cotizar por WhatsApp
     </a>
@@ -31,7 +31,7 @@ import { marca, hero } from '../config/marca';
     {
       hero.video ? (
         <video
-          class="block w-full h-[250px] lg:h-[560px] object-cover bg-negro"
+          class="block w-full h-[250px] lg:h-[560px] object-cover bg-sello"
           autoplay
           muted
           loop

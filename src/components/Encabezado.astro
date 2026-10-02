@@ -4,16 +4,16 @@ import IconoWhatsApp from './IconoWhatsApp.astro';
 import { navegacion } from '../config/marca';
 ---
 
-<header class="flex items-center justify-between gap-4 border-b-[3px] border-negro px-gutter py-3 lg:py-4">
-  <a href="#inicio" class="no-underline text-negro" aria-label="Volver al inicio">
+<header class="flex items-center justify-between gap-4 border-b-[3px] border-linea px-gutter py-3 lg:py-4">
+  <a href="#inicio" class="no-underline text-tinta" aria-label="Volver al inicio">
     <Wordmark class="text-[30px] lg:text-[36px]" />
   </a>
 
   <nav class="hidden lg:flex gap-8 font-display font-bold text-[20px] tracking-[0.06em] uppercase" aria-label="Secciones">
-    {navegacion.map((item) => <a href={item.href} class="py-2 no-underline text-negro">{item.texto}</a>)}
+    {navegacion.map((item) => <a href={item.href} class="py-2 no-underline text-tinta">{item.texto}</a>)}
   </nav>
 
-  <a href="#contacto" class="boton bg-negro text-amarillo font-extrabold text-[18px] lg:text-[20px] tracking-[0.04em] min-h-11 lg:min-h-12 px-3.5 lg:px-[18px]">
+  <a href="#contacto" class="boton bg-boton text-boton-tinta font-extrabold text-[18px] lg:text-[20px] tracking-[0.04em] min-h-11 lg:min-h-12 px-3.5 lg:px-[18px]">
     <IconoWhatsApp tamano={20} />
     <span><span class="hidden lg:inline">Cotizar por </span>WhatsApp</span>
   </a>

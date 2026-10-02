@@ -38,6 +38,16 @@ El brief, las paletas, las fuentes y las propuestas de animación están en [`do
 - Fotos y video reales de la volqueta y la operación. Cero stock.
 - Contraste mínimo 4.5:1 en texto. Una sola coreografía de entrada; `prefers-reduced-motion` respetado.
 
+## Ver la página con otra paleta
+
+Los componentes usan tokens semánticos (fondo, tinta, título, botón, línea), y cada tema asigna su paleta
+en `src/styles/global.css`. Para comparar sin tocar código:
+
+- `http://localhost:4321/?tema=b` → **B · Fierro y tierra** (acero, hueso, ocre, naranja; Barlow Condensed).
+- `http://localhost:4321/?tema=a` → vuelve a **A · Valla de vía** (por defecto).
+
+La elección se guarda en el navegador. Es una vista previa para decidir, no un selector público.
+
 ## Desarrollo
 
 ```bash
