@@ -1,6 +1,6 @@
-# volkar-web
+# wilkar-web
 
-Landing page de **VOLKAR**: movimiento de tierras y acarreo de material en Urabá (Antioquia, Colombia).
+Landing page de **WILKAR** (antes VOLKAR): movimiento de tierras y acarreo de material en Urabá (Antioquia, Colombia).
 Una volqueta con conductor para contratistas de obra civil y los proyectos portuarios. Contacto por WhatsApp.
 
 > El nombre comercial está en verificación (RUES, SIC, redes). El sitio debe aguantar un cambio de nombre:

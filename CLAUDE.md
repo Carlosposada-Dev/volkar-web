@@ -1,6 +1,6 @@
-# CLAUDE.md — volkar-web
+# CLAUDE.md — wilkar-web
 
-Landing page de VOLKAR (movimiento de tierras y acarreo en Urabá, Colombia). Una volqueta, dos socios,
+Landing page de WILKAR (movimiento de tierras y acarreo en Urabá, Colombia). Una volqueta, dos socios,
 contacto por WhatsApp. Si este repo está dentro de la carpeta `empresa-transporte`, el CLAUDE.md de
 la carpeta padre tiene el contexto completo del negocio; si no, lo esencial está aquí.
 
@@ -19,7 +19,7 @@ Mismo stack y estructura que el repo `carlosposada.dev` del fundador.
 
 - **Nada inventado** en contenido público. Datos pendientes entre corchetes `[así]`; nunca reemplazarlos
   con valores supuestos. Capacidad, modelo, año, teléfono, horario y base de la volqueta están pendientes.
-- **Nombre de marca en un solo lugar** (`src/config/marca.ts` o similar): VOLKAR aún no está confirmado.
+- **Nombre de marca en un solo lugar** (`src/config/marca.ts` o similar): WILKAR aún no está confirmado (se cambió de VOLKAR el 2026-10-01).
 - **Fotos y video**: sólo reales. Mientras no existan, placeholders marcados "FOTO REAL: …".
 - **Tipografía**: nada de Inter, Roboto, Arial, Space Grotesk ni fuentes del sistema. Las fuentes se
   autohospedan (`@fontsource`), no se cargan desde Google Fonts.

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Avatar "VK": círculo amarillo, iniciales negras inclinadas 8°. La fuente real (Big Shoulders) no se puede incrustar aquí; se dibuja en trazos. -->
+  <!-- Avatar "WK": círculo amarillo, iniciales negras inclinadas 8°. La fuente real (Big Shoulders) no se puede incrustar aquí; se dibuja en trazos. -->
   <circle cx="32" cy="32" r="32" fill="#F5C400"/>
-  <g fill="none" stroke="#000" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter" transform="skewX(-8) translate(4 0)">
-    <path d="M12 18 L20 46 L28 18"/>
-    <path d="M36 18 V46 M50 18 L37 32 L50 46"/>
+  <g fill="none" stroke="#000" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" transform="skewX(-8) translate(5 0)">
+    <path d="M6 18 L12 46 L20 28 L28 46 L34 18"/>
+    <path d="M41 18 V46 M55 18 L42 32 L55 46"/>
   </g>
 </svg>

@@ -1,13 +1,14 @@
 /**
  * Único lugar donde vive el nombre de marca y los datos de la empresa.
- * VOLKAR aún no está confirmado (RUES, SIC, redes): cambiarlo aquí cambia todo el sitio.
+ * WILKAR (antes VOLKAR, cambiado el 2026-10-01 a pedido del socio) aún no está confirmado
+ * (RUES, SIC, redes): cambiarlo aquí cambia todo el sitio.
  * Los datos pendientes van entre corchetes `[así]` y NUNCA se reemplazan con valores supuestos.
  */
 
 export const marca = {
-  nombre: 'VOLKAR',
+  nombre: 'WILKAR',
   /** Iniciales para el avatar (WhatsApp, favicon). */
-  siglas: 'VK',
+  siglas: 'WK',
   lema: 'Acarreo de material y movimiento de tierras en Urabá',
   descripcion:
     'Volqueta con conductor para contratistas de obra civil y los proyectos portuarios de Urabá. Cotice por WhatsApp y le respondemos desde la obra.',

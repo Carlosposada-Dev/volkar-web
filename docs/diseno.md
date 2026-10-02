@@ -41,7 +41,7 @@ mayúsculas.
 | `--gris-claro` | #B3B3B3 | texto secundario sobre negro (10:1) |
 
 Fuentes: Big Shoulders Display 900 (display) y 300 (contrapeso); Archivo 300/400 (texto); JetBrains
-Mono (ficha). Logo: wordmark inclinado 8° con franja de obra; avatar "VK".
+Mono (ficha). Logo: wordmark inclinado 8° con franja de obra; avatar "WK" (era "VK" cuando el nombre era VOLKAR).
 Elegirla si manda el contratista que llama desde la obra. La más memorable en la puerta; la menos corporativa.
 
 ### B · Fierro y tierra
@@ -107,7 +107,7 @@ Base para cualquier dirección:
 1. **Hero con video real de la tolva descargando.** Clip de 6–8 s grabado con celular, mudo, en bucle,
    `<video autoplay muted loop playsinline>` con póster. El nombre encima; la frase aparece cuando cae el
    material. Hasta tener el clip: placeholder marcado "VIDEO REAL: tolva descargando".
-2. **El wordmark se descarga.** Al cargar, las letras de VOLKAR caen desde arriba una por una con peso
+2. **El wordmark se descarga.** Al cargar, las letras del nombre caen desde arriba una por una con peso
    y asientan con un rebote mínimo. Una sola coreografía de ~1 s; después la página queda quieta.
 3. **Números que cuentan como báscula.** m³ y t suben desde cero al entrar en pantalla, dígitos que
    ruedan como odómetro. Estado final = el número; con reduced-motion se muestra directo.
